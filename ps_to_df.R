@@ -1,20 +1,22 @@
 # ps.to.df #####################################################################
 
-#' @description Return output from ps command as a data.frame. 
+#' @description Returns output from ps command as a data.frame. 
 #' 
 #' @param simple.selection A \code{character} specifying a ps option listed as
-#'                         a 'SIMPLE PROCESS SELECTION' option.
+#'                         a 'SIMPLE PROCESS SELECTION' option
+#'                         (Default: simple.selection = '-A').
 #' @param bylist.selection A \code{character} specifying a ps option listed as
 #'                         a 'PROCESS SELECTION BY LIST' option.
 #' @param process.sort     A \code{character} specifying one or multiple
 #'                         keywords to be used for sorting processes. If
 #'                         multiple keywords are specified, they should be comma
 #'                         separated. A keyword can be preceded by a '-' sign
-#'                         for decreasing order.
+#'                         for decreasing order
+#'                         (Default: process.sort = '-%cpu').
 #' @param top.rows         An \code{integer} to specify the number of top rows
 #'                         to keep in the final data.frame.
 #' @param other            A \code{character} to specify a ps option not related
-#'                         to the selection of processes.
+#'                         to the selection of processes (Support: other = 'L').
 #' @value a \code{data.frame} containing processes by row, and for all processes
 #'                            the percentage of CPU use, the percentage of
 #'                            Memory use, the PID and PPID, the user name, the
@@ -31,17 +33,17 @@
 #TODO: Use output format integers to automatically calculate column ranges.
 #TODO: Add option to specify output format as a string.
 
-ps.to.df<-function(simple.selection="A", bylist.selection=NULL,
+ps.to.df<-function(simple.selection="-A", bylist.selection=NULL,
                    process.sort="-%cpu", top.rows=NULL, other=NULL){
   if(is.null(other)){ #If no 'other' argument specified, run default cmd
     if(is.null(bylist.selection)){
       #If no arg for 'bylist.selection', use 'simple.selection' arg
       base.cmd<-paste0(
-        "ps -", simple.selection,
+        "ps ", simple.selection,
         " --no-headers -o %cpu:5,%mem:5,pid:7,ppid:7,user:36,comm:15,lstart:30,etime:30,stat:5 --sort=")  
     } else { #Use 'bylist.selection' arg
       base.cmd<-paste0(
-        "ps -", bylist.selection,
+        "ps ", bylist.selection,
         " --no-headers -o %cpu:5,%mem:5,pid:7,ppid:7,user:36,comm:15,lstart:30,etime:30,stat:5 --sort=")
     }
     if(is.null(top.rows)){ cmd<-paste0(base.cmd, process.sort) } else {
