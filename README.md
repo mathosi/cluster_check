@@ -1,5 +1,7 @@
 # Cluster_check
+**What:**  
 Cluster_check is a collection of functions allowing any user of RStudio/RStudio server to probe the ongoing processes on a computer or a server.  
+**Why:**  
 We have developed these functions with the intention to raise awareness about resources available for those using RStudio server, and about the importance of sharing them in a friendly way.  
 We encourage all users who **often execute commands in parallel** on the server, to use these functions to have a look at **the current server usage**, and to **evaluate the time they expect to need**, before setting the number of cores/threads they want to use. **Only 32 cores are available on the server!**
 
@@ -16,7 +18,7 @@ This repository contains currently 2 scrips:
 * `ps_to_df.R` which contains the function `ps.to.df()`.  
 
 ## Prerequesites
-If you plan to use the function `checkCluster()` you need to install the package **magrittr**.
+If you plan to use the function `checkCluster()` you need to install the R package **magrittr**.  
 If you plan to use the function `ps.to.df()` no additional package installation is needed.
 
 ## Documentation
