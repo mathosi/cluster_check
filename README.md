@@ -32,17 +32,18 @@ If you plan to use the function `ps.to.df()` no additional package installation 
 * **_process.sort_** - A character string specifying one or multiple keywords to be used for sorting processes. If multiple keywords are specified, they should be comma separated. A keyword can be preceded by a '-' sign for decreasing order (Default: process.sort = '-%cpu').  
 * **_top.rows_** - An integer to specify the number of top rows to keep in the final data.frame.  
 * **_other_** - A character string to specify a ps option not related to the selection of processes (Value supported: other = 'L').  
+
 **Value**:  
 A R **data.frame** containing processes by row, and for all processes the percentage of CPU use, the percentage of Memory use, the PID and PPID, the user name, the command name, the date and time when the process has been created, the time since the process is running and status of the process.  
 
-**Examples**:
+**Examples**:  
 To list all on going processes:  
 ```R
 ps.to.df()
 ```
 To list all on going "rsession" processes:  
 ```R
-ps.to.df(bylist.selection = '-C')
+ps.to.df(bylist.selection = '-C rsession')
 ```
 To sort all on going processes by percentage of memory used in decreasing order:  
 ```R
@@ -54,5 +55,5 @@ ps.to.df(process.sort = '-%cpu', top.rows = 10)
 ps.to.df(top.rows = 10) #Simplified - Processes are sorted by decreasing order of %CPU usage by default. 
 ```
 
-**References**:
+**References**:  
 Additional information can be found in the original documentation of **ps**:  [**http://man7.org/linux/man-pages/man1/ps.1.html**](http://man7.org/linux/man-pages/man1/ps.1.html)
