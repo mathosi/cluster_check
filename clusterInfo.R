@@ -77,8 +77,8 @@ clusterInfo <- function(relative=TRUE, by_process=FALSE, ...){
     result <- lapply(ps_user_df_split, occupied_by_user)
     result_df <- as.data.frame(do.call(rbind, result))
     rownames(result_df) <- names(result)
-    result_df <- head(result_df, 10)
     result_df <- result_df[order(result_df$CPU_occupied_by_user, decreasing = T), c(3,1,2)]
+    result_df <- head(result_df, 10)
     if(relative){
       result_df <- result_df / c(1, CPU_total/100, mem_total/100) 
     }
