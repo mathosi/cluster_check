@@ -1,3 +1,6 @@
+#source functions with:
+#devtools::source_url('https://raw.githubusercontent.com/mathosi/cluster_check/master/checkClusterComplete.R')
+
 # ps.to.df #####################################################################
 
 #' @description Returns output from ps command as a data.frame. 
