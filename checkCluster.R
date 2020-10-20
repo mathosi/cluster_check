@@ -41,7 +41,7 @@ checkCluster <- function(){
 
   proc_summary_df = resource_df %>%
     dplyr::group_by(USER) %>%
-    dplyr::summarise(total_cpus=sum(perCPU > 85),
+    dplyr::summarise(total_cpus=round(sum(perCPU)/100, 0),
                      total_cpu_perc=sum(perCPU),
                      total_mem_gb=round(sum(perMEM)*0.01*totalMem,3),
                      total_mem_perc=round(sum(perMEM),1)) %>%
